@@ -1,0 +1,8 @@
+django
+pandas
+numpy
+scikit-learn
+nltk
+joblib
+django-debug-toolbar
+celery

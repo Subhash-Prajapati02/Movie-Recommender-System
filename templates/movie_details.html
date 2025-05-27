@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4">
+    <h1 class="text-4xl font-bold mb-8 animate-bounce">{{ movie.title }}</h1>
+    <div class="w-full max-w-2xl bg-gray-800 p-6 rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:scale-105">
+        <h2 class="text-2xl font-semibold mb-4">Movie Details:</h2>
+        <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+        <p><strong>Director:</strong> {{ movie.director }}</p>
+        <p><strong>Genres:</strong> {{ movie.genres }}</p>
+        <p><strong>Overview:</strong> {{ movie.overview }}</p>
+    </div>
+
+    {% if recommendations %}
+        <h2 class="text-2xl font-semibold mt-8 mb-4 animate-pulse">Recommended Movies:</h2>
+        <ul class="space-y-2">
+            {% for movie in recommendations %}
+                <li class="bg-gray-800 p-4 rounded-lg shadow-lg transition duration-500 ease-in-out transform hover:scale-105">
+                    <a href="{% url 'movie_detail' movie %}" class="text-white">{{ movie }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+</body>
+</html>
